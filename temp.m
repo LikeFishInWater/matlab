@@ -1,3 +1,4 @@
+%% by Yang Wenchao
 %% lds_ldpc_gf2_2000_4000 c代码,迭代10次
 c_gf2_ber=[0.0675 0.02658 0.002755 ];
 %% lds_ldpc_gf2_2000_4000 c代码,迭代50次
