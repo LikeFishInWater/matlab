@@ -54,15 +54,9 @@ for ii=1:256
     end
 end
 tic;
-EsNo=10:20;
+EsNo=100;
 for ir=1:length(EsNo)
     snr=EsNo(ir);
-    sigma=sqrt(1/2*1/(10^(snr/10)));
-    if sigma<0.04
-        sigma=0.04
-        disp('sigma<0.04')
-        pause;
-    end
     flag=1;
     fe(ir)=0;
     be(ir)=0;
@@ -74,6 +68,12 @@ for ir=1:length(EsNo)
         modData = step(hModulator, x);
         temp=H*modData; 
         y=awgn(temp,snr);
+        sigma=sqrt(1/2*1/(10^(snr/10)));
+        if sigma<0.04
+            sigma=0.04
+            printf('sigma<0.04')
+            pause;
+        end
         %%%%%%%%%%%%%%% MPA decoder %%%%%%%%%%%%%%%%%%%%%
         D=zeros(12,16,4);
         for m=1:16
@@ -158,11 +158,11 @@ for ir=1:length(EsNo)
         else
             fe(ir)=fe(ir)+1     
         end 
-        if(fe(ir)==30)
+        if(fe(ir)==10)
             flag=0;
         end
-%         total(ir)
-%         fe(ir)
+        total(ir)
+        fe(ir)
     end
     ratio_fe(ir)=fe(ir)/total(ir)
     ratio_be(ir)=be(ir)/total(ir)/16

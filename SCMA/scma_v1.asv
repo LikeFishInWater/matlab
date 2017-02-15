@@ -1,6 +1,7 @@
 % clc;
 clear;
 
+
 M=4;
 N=2;
 K=4;
@@ -79,16 +80,16 @@ for n=1:16
 end
 status=status+1;
 
-EsNo=10:20;
+EsNo=1:20;
 for mm=1:length(EsNo)
     flag=1;
-    snr=EsNo(mm);
-    fe(mm)=0;
-    be(mm)=0;
+    snr=mm+10;
+    fe=0;
+    be=0;
     bbe=0;
-    total(mm)=0;
+    total=0;
     while flag
-        total(mm)=total(mm)+1;
+        total=total+1;
         for ii=1:J
             u(ii)=randi([1,M]);
         end
@@ -159,9 +160,9 @@ for mm=1:length(EsNo)
         end
         for j=1:J
             if decode(j)==u(j)
-                be(mm)=be(mm);
+                be=be;
             else
-                be(mm)=be(mm)+1;
+                be=be+1;
             end
         end
         for j=1:J
@@ -176,17 +177,17 @@ for mm=1:length(EsNo)
             end
         end
         if decode==u
-            fe(mm)=fe(mm);
+            fe=fe;
         else
-            fe(mm)=fe(mm)+1
+            fe=fe+1
         end
-        if fe(mm)==30
+        if fe==30
             flag=0;
         end
     end
-    ratio_fe(mm)=fe(mm)/total(mm)
-    ratio_be(mm)=be(mm)/total(mm)/6
-    ratio_bbe(mm)=bbe/total(mm)/12
+    ratio_fe(mm)=fe/total
+    ratio_be(mm)=be/total/6
+    ratio_bbe(mm)=bbe/total/12
 end
 semilogy(5:10,ratio_bbe);
 grid on;

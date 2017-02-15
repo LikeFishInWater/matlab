@@ -5,7 +5,7 @@ bitsPerSymbol=log(M)/log(2);
 hMod = comm.RectangularQAMModulator('ModulationOrder',M,'BitInput',true,'NormalizationMethod','Average power');
 hDemod = comm.RectangularQAMDemodulator('ModulationOrder',M,'BitOutput',true);
 
-EbNo=0:10;
+EbNo=1:10;
 EsNo=EbNo+10*log10(bitsPerSymbol);
 for ii=1:length(EbNo)
     snr=EsNo(ii);
