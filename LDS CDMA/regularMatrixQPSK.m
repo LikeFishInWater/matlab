@@ -3,7 +3,7 @@ clear;
 EsNo=11:20;
 ite=7;
 %% read F matrix
-BinaryFile = 'MatszhN24_12_3_6.txt';
+BinaryFile = 'MatszhN16_12_3_4_sample.txt';
 fid=fopen(BinaryFile);
 line=str2num(fgetl(fid));
 K=line(1);
